@@ -1,0 +1,253 @@
+Handson day8
+
+Program1:
+
+package com.day8;
+
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
+
+class UserMainCode{
+	void calculateAverage(Map<Integer,Double> hm){
+		
+		double sum = 0;
+	    int count = 0;
+	    DecimalFormat df = new DecimalFormat("#.00");
+	    Iterator<Integer> it = hm.keySet().iterator();
+	    while (it.hasNext()) {
+	      int y = it.next();
+	      if (y % 2 == 0) {
+	        sum = (double) (sum + hm.get(y));
+	        count++;
+	      }
+	    }
+	    double d = sum / count;
+	    System.out.println(df.format(d));
+	}
+}
+
+public class Program1 {
+
+	public static void main(String[] args) {
+		Map<Integer,Double> hm=new HashMap<>();
+		
+		Scanner s=new Scanner(System.in);
+		System.out.println("No of hashmap values:");
+		int n=s.nextInt();
+		
+		for (int i = 0; i < n; i++) {
+	            Integer k = s.nextInt();
+	            Double v = s.nextDouble();
+	            
+	            
+	            
+	            hm.put(k, v);
+	            
+	            }
+		//System.out.println(hm.size());
+		UserMainCode um=new UserMainCode();
+		um.calculateAverage(hm);
+
+	}
+
+}
+output:
+No of hashmap values:
+4
+1
+4.5
+2
+3.6
+3
+5.5
+4
+6.4
+5.00
+
+Program2:
+package com.day8;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+
+class Code{
+	void delete(Map<Integer,String> hm){
+		int count=0;
+		Iterator<Integer> it = hm.keySet().iterator();
+		while(it.hasNext()){
+			int y=it.next();
+			if(y%3==0){
+				count++;
+			}
+		}
+		System.out.println(count);
+		
+	}
+}
+
+public class Program2 {
+
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		Map<Integer,String> hm=new HashMap<>();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("No of hashmap values:");
+		int n=Integer.parseInt(br.readLine());;
+		
+		for (int i = 0; i < n; i++) {
+			 hm.put(Integer.parseInt(br.readLine()), br.readLine());
+	            }
+		
+		Code um1=new Code();
+		um1.delete(hm);
+		
+
+	}
+
+}
+
+output:
+No of hashmap values:
+4
+33
+amar
+45
+hasr
+45
+dig
+23
+gif
+
+2
+
+
+
+Program3:
+package com.day8;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
+class Code1{
+	void display(Map<Integer,String> hm){
+		int maxVal=(Collections.max(hm.keySet()));
+		for (Entry<Integer, String> entry : hm.entrySet()) {  // Itrate through hashmap
+            if (entry.getKey()==maxVal) {
+                System.out.println(entry.getValue());     // Print the key with max value
+            }
+        }
+		
+	}
+}
+
+public class Program3 {
+
+	public static void main(String[] args) {
+		Map<Integer,String> hm=new HashMap<>();
+		
+		Scanner s=new Scanner(System.in);
+		System.out.println("No of hashmap values:");
+		int n=s.nextInt();
+		
+		for (int i = 0; i < n; i++) {
+	            Integer k = s.nextInt();
+	           String v = s.next();
+	            
+	            
+	            
+	            hm.put(k, v);
+	            
+	            }
+		Code1 c1=new Code1();
+		c1.display(hm);
+
+	}
+
+}
+
+output:
+No of hashmap values:
+4
+11
+hi
+23
+hello
+2
+good
+5
+bad
+
+hello
+
+
+
+Program4:
+package com.day8;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
+
+
+public class Program4 {
+	public static void main(String[] args){
+Map<String,String> hm=new HashMap<>();
+		
+		Scanner s=new Scanner(System.in);
+		System.out.println("No of hashmap values:");
+		int n=s.nextInt();
+		
+		for (int i = 0; i < n; i++) {
+	            String k = s.next();
+	           String v = s.next();
+	            
+	            
+	            
+	            hm.put(k, v);
+	            
+	            }
+		String h=s.next();
+		if(hm.containsKey(h)){
+			String val=hm.get(h);
+			System.out.println(val);
+		}
+		
+		/*for(Entry<String, String> entry: hm.entrySet()) {
+
+		      // if give value is equal to value from entry
+		      // print the corresponding key
+		      if(entry.getKey()== h) {
+		        System.out.println(entry.getValue());
+		        break;
+		      }
+		}*/
+	}
+
+}
+
+output:
+No of hashmap values:
+4
+hi
+hello
+good
+bad
+dude
+frd
+bold
+strong
+
+dude
+frd
+
